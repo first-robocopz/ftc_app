@@ -71,7 +71,8 @@ public class FtcOpModeRegister implements OpModeRegister {
      */
     manager.register("NullOp", NullOp.class);
 
-
+    //DriveTrain op mode register
+    manager.register("DriveTrain", DriveTrain.class);
     /*
      * The following example op modes are designed to work with a K9-style robot.
      *  - K9TeleOp is a simple driver controlled program.
