@@ -12,7 +12,6 @@ public class DriveTrain extends OpMode{
     //initialize motor objects
     DcMotor leftMotor;
     DcMotor rightMotor;
-    int i = 0;
     ElapsedTime driveTime = new ElapsedTime();
     boolean start = true;
     @Override
