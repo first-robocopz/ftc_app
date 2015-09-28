@@ -93,11 +93,11 @@ public class FtcOpModeRegister implements OpModeRegister {
      *  - PushBotSquare uses the LinearOpMOde class and shows how to drive in a square pattern autonomously.
      */
 
-    manager.register("PushBotManual", PushBotManual.class);
-    manager.register("PushBotAuto", PushBotAuto.class);
-    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
-    manager.register("PushBotIrSeek", PushBotIrSeek.class);
-    manager.register("PushBotSquare", PushBotSquare.class);
+    //manager.register("PushBotManual", PushBotManual.class);
+    //manager.register("PushBotAuto", PushBotAuto.class);
+    //manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
+    //manager.register("PushBotIrSeek", PushBotIrSeek.class);
+    //manager.register("PushBotSquare", PushBotSquare.class);
 
   }
 }
