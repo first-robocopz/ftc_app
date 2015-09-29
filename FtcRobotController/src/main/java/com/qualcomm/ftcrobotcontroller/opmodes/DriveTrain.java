@@ -8,20 +8,44 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Ricky on 9/17/2015.
  */
 public class DriveTrain extends OpMode{
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
 
-    //initialize motor objects
-    DcMotor leftMotor;
-    DcMotor rightMotor;
+    public DriveTrain () {
+        //initialize motor objects
+        leftMotor = hardwareMap.dcMotor.get("motorL");
+        rightMotor = hardwareMap.dcMotor.get("motorR");
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+    }
+    public void setMotorPower (float pow) {
+        leftMotor.setPower(pow);
+        rightMotor.setPower(pow);
+    }
+    public void setLeftPower (float powl) {
+        leftMotor.setPower(powl);
+    }
+    public void setRightPower (float powr) {
+        rightMotor.setPower(powr);
+    }
+    public void tankDrive () {
+        //get gamepad values
+        float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
+
+        //set motors to gamepad values
+        setLeftPower(leftY);
+        setRightPower(rightY);
+    }
+    public void stopMotors() {
+        setMotorPower(0);
+    }
+    //initialize timer objects
     ElapsedTime driveTime = new ElapsedTime();
     boolean start = true;
     @Override
     public void init() {
 
-        //set motor object definitions
-        leftMotor = hardwareMap.dcMotor.get("motorL");
-        rightMotor = hardwareMap.dcMotor.get("motorR");
-        //reverse right motor direction
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+
 
 
 
