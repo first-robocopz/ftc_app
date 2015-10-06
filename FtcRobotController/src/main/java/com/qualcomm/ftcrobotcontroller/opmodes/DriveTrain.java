@@ -2,7 +2,6 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * Created by Ricky on 9/17/2015.
@@ -11,26 +10,28 @@ public class DriveTrain extends OpMode{
     private DcMotor leftMotor;
     private DcMotor rightMotor;
 
-    public DriveTrain () {
+   public DriveTrain () {
         //initialize motor objects
         leftMotor = hardwareMap.dcMotor.get("motorL");
         rightMotor = hardwareMap.dcMotor.get("motorR");
         rightMotor.setDirection(DcMotor.Direction.REVERSE);
     }
-    public void setMotorPower (float pow) {
+    public void setMotorPower (double pow) {
         leftMotor.setPower(pow);
         rightMotor.setPower(pow);
     }
-    public void setLeftPower (float powl) {
+    public void setLeftPower (double powl) {
+
         leftMotor.setPower(powl);
     }
-    public void setRightPower (float powr) {
+    public void setRightPower (double powr) {
+
         rightMotor.setPower(powr);
     }
     public void tankDrive () {
         //get gamepad values
-        float leftY = -gamepad1.left_stick_y;
-        float rightY = -gamepad1.right_stick_y;
+        double leftY = -gamepad1.left_stick_y;
+        double rightY = -gamepad1.right_stick_y;
 
         //set motors to gamepad values
         setLeftPower(leftY);
@@ -39,12 +40,14 @@ public class DriveTrain extends OpMode{
     public void stopMotors() {
         setMotorPower(0);
     }
-    //initialize timer objects
-    ElapsedTime driveTime = new ElapsedTime();
-    boolean start = true;
+
     @Override
     public void init() {
 
+
+        leftMotor = hardwareMap.dcMotor.get("motorL");
+        rightMotor = hardwareMap.dcMotor.get("motorR");
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
 
 
@@ -58,26 +61,7 @@ public class DriveTrain extends OpMode{
     @Override
     public void loop() {
 
-        //float leftY = -gamepad1.left_stick_y;
-        //float rightY = -gamepad1.right_stick_y;
-        //float leftYcurve = leftY * leftY;
-        //float rightYcurve = rightY * rightY;
-        //double leftY = .5;
-        //double rightY = .5;
+        tankDrive();
 
-
-        //leftMotor.setPower(leftY);
-        //rightMotor.setPower(rightY);
-        while (start)
-        {
-            leftMotor.setPower(0.5);
-            rightMotor.setPower(0.5);
-            start = false;
-        }
-        if (driveTime.time()>= 2.0)
-        {
-            leftMotor.setPower(0.0);
-            rightMotor.setPower(0.0);
-        }
     }
 }
